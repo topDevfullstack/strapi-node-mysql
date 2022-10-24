@@ -5,14 +5,10 @@ module.exports = {
       const entries = await strapi.entityService.findMany(
         "api::video.video.find",
         {
-          fields: ["id", "title", "createdAt"],
-          populate: {
-            category: {
-              fields: ["name"],
-            },
-          },
+          fields: ["id", "title", "created_at", "provider"],
         }
       );
+      console.log(entries);
 
       // reduce the data to the format we want to return
       let entriesReduced;
@@ -22,8 +18,8 @@ module.exports = {
           acc.push({
             id: item.id,
             title: item.title || "",
-            category: item.category.name || "",
-            publishedDate: new Date(item.createdAt).toDateString() || "",
+            provider: item.provider || "",
+            publishedDate: new Date(item.created_at).toDateString() || "",
           });
           return acc;
         }, []);
