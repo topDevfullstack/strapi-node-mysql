@@ -1,14 +1,36 @@
+import FTP from 'basic-ftp';
+
+async function example() {
+  const client = new FTP.Client()
+  client.ftp.verbose = true
+  try {
+      await client.access({
+          host: "65.108.103.246",
+          user: "freelancer",
+          password: "6sEbmm4rj7tX2x72",
+          secure: true
+      })
+      console.log(await client.list())
+      // await client.uploadFrom("README.md", "README_FTP.md")
+      // await client.downloadTo("README_COPY.md", "README_FTP.md")
+  }
+  catch(err) {
+      console.log(err)
+  }
+  client.close()
+}
+
 module.exports = {
-  postsReport: async () => {
+  ftpScan: async () => {
     try {
       // fetching data
       const entries = await strapi.entityService.findMany(
-        "api::video.video.find",
+        "api::video.video",
         {
           fields: ["id", "title", "created_at", "provider"],
         }
       );
-      console.log(entries);
+      // console.log(entries);
 
       // reduce the data to the format we want to return
       let entriesReduced;
