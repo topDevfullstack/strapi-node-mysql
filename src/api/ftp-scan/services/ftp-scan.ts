@@ -1,4 +1,4 @@
-import FTP from 'basic-ftp';
+import * as FTP from 'basic-ftp';
 
 async function example() {
   const client = new FTP.Client()
