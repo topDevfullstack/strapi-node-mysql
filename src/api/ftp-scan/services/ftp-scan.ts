@@ -27,14 +27,14 @@ module.exports = {
   ftpScan: async () => {
     try {
       // fetching data
-      // const entries = await strapi.entityService.findMany(
-      //   "api::video.video",
-      //   {
-      //     fields: ["id", "title", "created_at", "provider"],
-      //   }
-      // );
+      const entries = await strapi.entityService.findMany(
+        "api::video.video",
+        {
+          fields: ["id", "title", "created_at", "provider"],
+        }
+      );
       // console.log(entries);
-      const entries = example();
+      // const entries = example();
 
       // reduce the data to the format we want to return
       let entriesReduced;
