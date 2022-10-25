@@ -12,9 +12,9 @@ async function example() {
       })
       const rslt = await client.list();
       console.log(rslt);
-      return rslt;
       // await client.uploadFrom("README.md", "README_FTP.md")
       // await client.downloadTo("README_COPY.md", "README_FTP.md")
+      return rslt;
   }
   catch(err) {
       console.log(err);

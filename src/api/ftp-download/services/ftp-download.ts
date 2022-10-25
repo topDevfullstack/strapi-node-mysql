@@ -10,31 +10,32 @@ async function example() {
           password: "6sEbmm4rj7tX2x72",
           secure: true
       })
-      const rslt = await client.list();
-      console.log(rslt);
-      return rslt;
+      // const rslt = await client.list();
+      // console.log(rslt);
       // await client.uploadFrom("README.md", "README_FTP.md")
-      // await client.downloadTo("README_COPY.md", "README_FTP.md")
+      await client.downloadTo("README_COPY.md", "README_FTP.md");
+      const rslt = "README_COPY";
+      return rslt;
   }
   catch(err) {
       console.log(err);
       return err;
   }
-  client.close()
+  client.close();
 }
 
 module.exports = {
   ftpDownload: async () => {
     try {
       // fetching data
-      const entries = await strapi.entityService.findMany(
-        "api::video.video",
-        {
-          fields: ["id", "title", "created_at", "provider"],
-        }
-      );
+      // const entries = await strapi.entityService.findMany(
+      //   "api::video.video",
+      //   {
+      //     fields: ["id", "title", "created_at", "provider"],
+      //   }
+      // );
       // console.log(entries);
-      // const entries = example();
+      const entries = example();
 
       // reduce the data to the format we want to return
       let entriesReduced;
